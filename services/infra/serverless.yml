@@ -1,5 +1,12 @@
 # Stack containing core shared infrastructure resources for the eventsapp sample app.
-service: eventsapp-infra
+service: my-fullstack-app
+
+
+useDotenv: true
+variablesResolutionMode: 20210326
+projectDir: ../../
+
+
 
 provider:
     name: aws
@@ -29,8 +36,8 @@ custom:
     appName: eventsapp
     dynamoDbTablePrefix: ${self:custom.appName}-${self:provider.stage}
     cognitoResourcePrefix: ${self:custom.appName}-${self:provider.stage}
-    photosBucketName: ${self:custom.appName}-photos-${self:provider.stage}.sampleapps.winterwindsoftware.com # TODO: change this to something globally unique
-    hostedLoginDomain: ${self:custom.appName}-winterwind-${self:provider.stage} # TODO: change this to something globally unique
+    photosBucketName: ${self:custom.appName}-photosbucket-${self:provider.stage}.sampleapps.winterwindsoftware.com # TODO: change this to something globally unique
+    hostedLoginDomain: ${self:custom.appName}-winterwindphotosbucket-${self:provider.stage} # TODO: change this to something globally unique
 
 resources:
     - ${file(resources/s3-cloudfront-resources.yml)}
@@ -42,5 +49,5 @@ resources:
         DynamoDBTablePrefix:
             Value: ${self:custom.dynamoDbTablePrefix}
 
-plugins:
-- serverless-pseudo-parameters
+            #plugins:
+        #- serverless-pseudo-parameters
