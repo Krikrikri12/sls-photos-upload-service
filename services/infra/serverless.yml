@@ -1,5 +1,5 @@
 # Stack containing core shared infrastructure resources for the eventsapp sample app.
-service: eventsapp-infra
+service: my-fullstack-app
 
 useDotenv: true
 variablesResolutionMode: 20210326
@@ -30,7 +30,7 @@ provider:
             - Update:Delete
 
 custom:
-    appName: eventsapp
+    appName: my-fullstack-app
     dynamoDbTablePrefix: ${self:custom.appName}-${self:provider.stage}
     cognitoResourcePrefix: ${self:custom.appName}-${self:provider.stage}
     photosBucketName: ${self:custom.appName}-photosbucket-${self:provider.stage} # TODO: change this to something globally unique
