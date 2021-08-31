@@ -4,7 +4,7 @@ Resources:
         Type: AWS::S3::Bucket
         Properties:
             BucketName: !Sub '${self:custom.photosBucketName}'
-            AccessControl: PublicRead
+            AccessControl: Private
             CorsConfiguration:
                 CorsRules:
                 -   AllowedHeaders: ['*']
@@ -34,11 +34,11 @@ Resources:
             CloudFrontOriginAccessIdentityConfig:
                 Comment: !Sub 'Identity for accessing CloudFront from S3 within stack #{AWS::StackName}'
 
-    # Cloudfront distro backed by PhotosBucket
-#    PhotosCdnDistribution:
- #       Type: AWS::CloudFront::Distribution
-  #      Properties:
-   #         DistributionConfig:
+ #    Cloudfront distro backed by PhotosBucket
+  #  PhotosCdnDistribution:
+   #     Type: AWS::CloudFront::Distribution
+    #    Properties:
+     #       DistributionConfig:
     #            Origins:
                     # S3 origin for static content
      #               -   DomainName: !Sub '${self:custom.photosBucketName}.s3.amazonaws.com'
