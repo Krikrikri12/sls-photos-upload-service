@@ -14,6 +14,10 @@ Resources:
     PhotosBucketPolicy:
         Type: AWS::S3::BucketPolicy
         Properties:
+          BucketEncryption: 
+            ServerSideEncryptionConfiguration: 
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256
             Bucket:
                 Ref: PhotosBucket
             PolicyDocument:
